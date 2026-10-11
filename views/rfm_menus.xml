@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="rfm_menu_root" name="RFM"
+              groups="rfm_segmentation.group_rfm_user"/>
+    <menuitem id="rfm_menu_segments" name="Segments"
+              parent="rfm_menu_root" action="rfm_segment_action"/>
+</odoo>

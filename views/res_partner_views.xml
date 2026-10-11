@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_partner_view_form_rfm" model="ir.ui.view">
+        <field name="name">res.partner.form.rfm</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="rfm" string="RFM" groups="rfm_segmentation.group_rfm_user">
+                    <group>
+                        <field name="rfm_recency_score"/>
+                        <field name="rfm_frequency_score"/>
+                        <field name="rfm_monetary_score"/>
+                        <field name="rfm_score"/>
+                        <field name="rfm_segment_id"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
