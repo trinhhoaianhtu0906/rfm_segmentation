@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Standard RFM grid on the recency and frequency scores. Segments are
+     matched in sequence order, so Lost wins over Hibernating for R=1. -->
+<odoo noupdate="1">
+    <record id="segment_champions" model="rfm.segment">
+        <field name="name">Champions</field>
+        <field name="code">CHAMPIONS</field>
+        <field name="sequence">10</field>
+        <field name="r_min">5</field>
+        <field name="r_max">5</field>
+        <field name="f_min">4</field>
+        <field name="f_max">5</field>
+        <field name="description">Bought recently, buy often and spend the most. Reward them and ask for reviews.</field>
+    </record>
+    <record id="segment_loyal" model="rfm.segment">
+        <field name="name">Loyal</field>
+        <field name="code">LOYAL</field>
+        <field name="sequence">20</field>
+        <field name="r_min">3</field>
+        <field name="r_max">4</field>
+        <field name="f_min">4</field>
+        <field name="f_max">5</field>
+        <field name="description">Buy regularly. Upsell higher value products.</field>
+    </record>
+    <record id="segment_potential_loyalist" model="rfm.segment">
+        <field name="name">Potential Loyalist</field>
+        <field name="code">POTENTIAL_LOYALIST</field>
+        <field name="sequence">30</field>
+        <field name="r_min">4</field>
+        <field name="r_max">5</field>
+        <field name="f_min">2</field>
+        <field name="f_max">3</field>
+        <field name="description">Recent customers with a few purchases. Offer a membership or loyalty program.</field>
+    </record>
+    <record id="segment_new" model="rfm.segment">
+        <field name="name">New Customers</field>
+        <field name="code">NEW</field>
+        <field name="sequence">40</field>
+        <field name="r_min">5</field>
+        <field name="r_max">5</field>
+        <field name="f_min">1</field>
+        <field name="f_max">1</field>
+        <field name="description">Bought for the first time very recently. Onboard them well.</field>
+    </record>
+    <record id="segment_promising" model="rfm.segment">
+        <field name="name">Promising</field>
+        <field name="code">PROMISING</field>
+        <field name="sequence">50</field>
+        <field name="r_min">4</field>
+        <field name="r_max">4</field>
+        <field name="f_min">1</field>
+        <field name="f_max">1</field>
+        <field name="description">Recent one-time buyers. Build brand awareness with a free trial or offer.</field>
+    </record>
+    <record id="segment_need_attention" model="rfm.segment">
+        <field name="name">Need Attention</field>
+        <field name="code">NEED_ATTENTION</field>
+        <field name="sequence">60</field>
+        <field name="r_min">3</field>
+        <field name="r_max">3</field>
+        <field name="f_min">3</field>
+        <field name="f_max">3</field>
+        <field name="description">Average recency and frequency. Make limited-time offers.</field>
+    </record>
+    <record id="segment_about_to_sleep" model="rfm.segment">
+        <field name="name">About to Sleep</field>
+        <field name="code">ABOUT_TO_SLEEP</field>
+        <field name="sequence">70</field>
+        <field name="r_min">3</field>
+        <field name="r_max">3</field>
+        <field name="f_min">1</field>
+        <field name="f_max">2</field>
+        <field name="description">Below average recency and frequency. Reactivate them before they leave.</field>
+    </record>
+    <record id="segment_at_risk" model="rfm.segment">
+        <field name="name">At Risk</field>
+        <field name="code">AT_RISK</field>
+        <field name="sequence">80</field>
+        <field name="r_min">1</field>
+        <field name="r_max">2</field>
+        <field name="f_min">3</field>
+        <field name="f_max">4</field>
+        <field name="description">Used to buy often but not for a long time. Send personalized offers.</field>
+    </record>
+    <record id="segment_cant_lose" model="rfm.segment">
+        <field name="name">Can't Lose Them</field>
+        <field name="code">CANT_LOSE</field>
+        <field name="sequence">90</field>
+        <field name="r_min">1</field>
+        <field name="r_max">2</field>
+        <field name="f_min">5</field>
+        <field name="f_max">5</field>
+        <field name="description">Were among the best customers but have not come back. Win them back.</field>
+    </record>
+    <record id="segment_lost" model="rfm.segment">
+        <field name="name">Lost</field>
+        <field name="code">LOST</field>
+        <field name="sequence">100</field>
+        <field name="r_min">1</field>
+        <field name="r_max">1</field>
+        <field name="f_min">1</field>
+        <field name="f_max">2</field>
+        <field name="description">Lowest recency and frequency. Ignore them unless a campaign is cheap.</field>
+    </record>
+    <record id="segment_hibernating" model="rfm.segment">
+        <field name="name">Hibernating</field>
+        <field name="code">HIBERNATING</field>
+        <field name="sequence">110</field>
+        <field name="r_min">1</field>
+        <field name="r_max">2</field>
+        <field name="f_min">1</field>
+        <field name="f_max">2</field>
+        <field name="description">Last purchase long ago and few orders. Offer relevant products and discounts.</field>
+    </record>
+</odoo>

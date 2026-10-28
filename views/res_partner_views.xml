@@ -8,14 +8,58 @@
             <xpath expr="//notebook" position="inside">
                 <page name="rfm" string="RFM" groups="rfm_segmentation.group_rfm_user">
                     <group>
-                        <field name="rfm_recency_score"/>
-                        <field name="rfm_frequency_score"/>
-                        <field name="rfm_monetary_score"/>
-                        <field name="rfm_score"/>
-                        <field name="rfm_segment_id"/>
+                        <group string="Scores">
+                            <field name="rfm_segment_id"/>
+                            <field name="rfm_score"/>
+                            <field name="rfm_recency_score"/>
+                            <field name="rfm_frequency_score"/>
+                            <field name="rfm_monetary_score"/>
+                        </group>
+                        <group string="Values">
+                            <field name="rfm_recency_days"/>
+                            <field name="rfm_frequency"/>
+                            <field name="rfm_monetary"/>
+                        </group>
                     </group>
                 </page>
             </xpath>
         </field>
+    </record>
+
+    <record id="res_partner_view_list_rfm" model="ir.ui.view">
+        <field name="name">res.partner.list.rfm</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//list" position="inside">
+                <field name="rfm_segment_id" optional="hide"
+                       groups="rfm_segmentation.group_rfm_user"/>
+                <field name="rfm_score" optional="hide"
+                       groups="rfm_segmentation.group_rfm_user"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="res_partner_view_search_rfm" model="ir.ui.view">
+        <field name="name">res.partner.search.rfm</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <field name="rfm_segment_id" groups="rfm_segmentation.group_rfm_user"/>
+                <filter name="group_rfm_segment" string="RFM segment"
+                        context="{'group_by': 'rfm_segment_id'}"
+                        groups="rfm_segmentation.group_rfm_user"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="rfm_partner_action" model="ir.actions.act_window">
+        <field name="name">Customers</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="base.view_partner_tree"/>
+        <field name="domain">[('rfm_segment_id', '!=', False)]</field>
+        <field name="context">{'search_default_group_rfm_segment': 1}</field>
     </record>
 </odoo>

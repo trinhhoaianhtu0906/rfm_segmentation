@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <menuitem id="rfm_menu_root" name="RFM"
+              web_icon="rfm_segmentation,static/description/icon.png"
               groups="rfm_segmentation.group_rfm_user"/>
-    <menuitem id="rfm_menu_segments" name="Segments"
+    <menuitem id="rfm_menu_customers" name="Customers" sequence="10"
+              parent="rfm_menu_root" action="rfm_partner_action"/>
+    <menuitem id="rfm_menu_segments" name="Segments" sequence="20"
               parent="rfm_menu_root" action="rfm_segment_action"/>
+    <menuitem id="rfm_menu_config" name="Configuration" sequence="90"
+              parent="rfm_menu_root" groups="rfm_segmentation.group_rfm_manager"/>
+    <menuitem id="rfm_menu_settings" name="Settings" sequence="10"
+              parent="rfm_menu_config" action="rfm_config_settings_action"
+              groups="base.group_system"/>
 </odoo>

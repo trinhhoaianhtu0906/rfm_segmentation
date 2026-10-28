@@ -6,9 +6,20 @@ RFM_GROUP = "rfm_segmentation.group_rfm_user"
 class ResPartner(models.Model):
     _inherit = "res.partner"
 
-    rfm_recency_score = fields.Integer(string="Recency score", groups=RFM_GROUP)
-    rfm_frequency_score = fields.Integer(string="Frequency score", groups=RFM_GROUP)
-    rfm_monetary_score = fields.Integer(string="Monetary score", groups=RFM_GROUP)
+    rfm_recency_days = fields.Integer(
+        string="Days since last purchase", readonly=True, groups=RFM_GROUP
+    )
+    rfm_frequency = fields.Integer(string="Purchases", readonly=True, groups=RFM_GROUP)
+    rfm_monetary = fields.Float(string="Revenue", readonly=True, groups=RFM_GROUP)
+    rfm_recency_score = fields.Integer(
+        string="Recency score", readonly=True, groups=RFM_GROUP
+    )
+    rfm_frequency_score = fields.Integer(
+        string="Frequency score", readonly=True, groups=RFM_GROUP
+    )
+    rfm_monetary_score = fields.Integer(
+        string="Monetary score", readonly=True, groups=RFM_GROUP
+    )
     rfm_score = fields.Char(
         string="RFM score",
         compute="_compute_rfm_score",
@@ -19,6 +30,7 @@ class ResPartner(models.Model):
         "rfm.segment",
         string="RFM segment",
         index=True,
+        readonly=True,
         groups=RFM_GROUP,
     )
 

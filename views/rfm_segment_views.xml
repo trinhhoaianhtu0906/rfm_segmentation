@@ -5,9 +5,18 @@
         <field name="model">rfm.segment</field>
         <field name="arch" type="xml">
             <list>
+                <header>
+                    <button name="action_compute_rfm" type="object" string="Compute RFM now"
+                            display="always" groups="rfm_segmentation.group_rfm_manager"/>
+                </header>
                 <field name="sequence" widget="handle"/>
                 <field name="code"/>
                 <field name="name"/>
+                <field name="r_min" string="R from"/>
+                <field name="r_max" string="R to"/>
+                <field name="f_min" string="F from"/>
+                <field name="f_max" string="F to"/>
+                <field name="partner_count"/>
             </list>
         </field>
     </record>
@@ -18,17 +27,29 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_partners" type="object"
+                                class="oe_stat_button" icon="fa-users">
+                            <field name="partner_count" widget="statinfo" string="Customers"/>
+                        </button>
+                    </div>
                     <group>
-                        <field name="name"/>
-                        <field name="code"/>
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                        </group>
+                        <group string="Score ranges">
+                            <label for="r_min" string="Recency"/>
+                            <div class="o_row">
+                                <field name="r_min"/> - <field name="r_max"/>
+                            </div>
+                            <label for="f_min" string="Frequency"/>
+                            <div class="o_row">
+                                <field name="f_min"/> - <field name="f_max"/>
+                            </div>
+                        </group>
                     </group>
                     <field name="description" placeholder="When to use this segment"/>
-                    <field name="partner_ids" readonly="1">
-                        <list>
-                            <field name="name"/>
-                            <field name="rfm_score"/>
-                        </list>
-                    </field>
                 </sheet>
             </form>
         </field>

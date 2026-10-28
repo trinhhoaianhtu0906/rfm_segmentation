@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="ir_cron_compute_rfm" model="ir.cron">
+        <field name="name">RFM: compute customer scores</field>
+        <field name="model_id" ref="model_rfm_calculator"/>
+        <field name="state">code</field>
+        <field name="code">model._cron_compute_rfm()</field>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+    </record>
+</odoo>
